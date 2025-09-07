@@ -1,0 +1,23 @@
+{
+  "name": "spotify-token-generator",
+  "version": "1.0.0",
+  "description": "Spotify authentication token generator with TOTP verification",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "spotify",
+    "token",
+    "authentication",
+    "totp",
+    "api"
+  ],
+  "author": "CycloneAddons",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "axios": "^1.6.0"
+  }
+}
