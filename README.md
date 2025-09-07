@@ -84,13 +84,14 @@ GET http://localhost:37353/api/getToken
 
 Here’s an example of the response returned by the server (anonymous Web Player token):
 
+```json
 {
   "clientId": "d8a5ed958d274c2e8ee717e6a4b0971d",
   "accessToken": "BQBk7vI7X2WHXlxZueGDHz709AvH5fCtiduLaeOwWc2mr9ffDqKmqaJkvVjS1u9z79TQ57KdEYPFNQUxLeICgzjMTrw2Zl68x8PqMS9_XUMGe3yuJQBtsmtjBmwskP96q_mjkXa_Y9c",
   "accessTokenExpirationTimestampMs": 1757250003632,
   "isAnonymous": true,
   "_notes": "Usage of this endpoint is not permitted under the Spotify Developer Terms and Developer Policy, and applicable law"
-}
+}```
 
 
 ---
