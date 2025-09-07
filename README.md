@@ -91,7 +91,8 @@ Here’s an example of the response returned by the server (anonymous Web Player
   "accessTokenExpirationTimestampMs": 1757250003632,
   "isAnonymous": true,
   "_notes": "Usage of this endpoint is not permitted under the Spotify Developer Terms and Developer Policy, and applicable law"
-}```
+}
+```
 
 
 ---
