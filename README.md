@@ -56,31 +56,48 @@ By using this project, you agree that:
 
 ---
 
-🚀 Installation
-
-Clone the repo and install dependencies:
-
 npm install
-
-
----
-
-▶️ Usage
-
-Start the server:
-
 npm start
 
-By default, it runs on port 37353.
+---
 
-Request a token example:
+🚀 Installation & Setup
 
-GET http://localhost:37353/api/getToken
 
+1. **Clone the repository and install dependencies:**
+  ```sh
+  git clone https://github.com/CycloneAddons/spotify-token-generator.git
+  cd spotify-token-generator
+  npm install
+  ```
+
+2. **Start the server locally:**
+  ```sh
+  npm start
+  ```
+  The server runs on port `37353` by default.
+
+3. **Request a token:**
+  ```http
+  GET http://localhost:37353/api/getToken
+  ```
 
 ---
 
-📦 Example Response
+🤖 Automated Secret Updates (GitHub Actions)
+
+This project uses a GitHub Actions workflow to keep the Spotify secrets up to date automatically:
+
+- Every hour, the workflow runs `update.js` to fetch the latest secrets from Spotify's web player.
+- If the secrets change, the workflow commits and pushes the updated JSON files to the `secrets/` directory.
+- The server always uses the latest available secrets, falling back to live extraction if the GitHub source is unavailable.
+
+**Manual update:**
+You can also run `node update.js` locally to refresh the secrets and save them in the `secrets/` folder.
+
+---
+
+📦 Example API Response
 
 Here’s an example of the response returned by the server (anonymous Web Player token):
 
@@ -94,16 +111,16 @@ Here’s an example of the response returned by the server (anonymous Web Player
 }
 ```
 
-
 ---
 
-🎯 Why This Project is Cool
 
-✔️ Recreates Spotify’s hidden authentication flow
-✔️ Shows how TOTP can secure web APIs
-✔️ Demonstrates reverse-engineering in practice
-✔️ Works as a live educational server to test against
+🎯 Key Features
 
+- Recreates Spotify’s hidden authentication flow
+- Demonstrates TOTP-based web API security
+- Reverse-engineers and documents the Web Player token process
+- Automated secret updates via GitHub Actions
+- Robust fallback: If GitHub secrets are unavailable, the server extracts secrets live from Spotify
 
 ---
 
