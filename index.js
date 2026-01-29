@@ -16,7 +16,7 @@ const REQUEST_HEADERS = {
 };
 
 async function fetchSecrets() {
-  const secretsUrl = 'https://github.com/Thereallo1026/spotify-secrets/blob/main/secrets/secretDict.json?raw=true';
+  const secretsUrl = 'https://github.com/xyloflake/spot-secrets-go/blob/main/secrets/secretDict.json?raw=true';
   const response = await axios.get(secretsUrl);
   const secretsData = response.data;
   
