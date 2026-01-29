@@ -1,6 +1,7 @@
 import express from 'express';
 import axios from 'axios';
 import crypto from 'crypto';
+import { extractSecrets, getLatestSecret } from './getSecret.js';
 
 const app = express();
 const PORT = 37353;
@@ -16,17 +17,28 @@ const REQUEST_HEADERS = {
 };
 
 async function fetchSecrets() {
-  const secretsUrl = 'https://github.com/xyloflake/spot-secrets-go/blob/main/secrets/secretDict.json?raw=true';
-  const response = await axios.get(secretsUrl);
-  const secretsData = response.data;
+  const secretsUrl = 'https://github.com/xyloflake/spodt-secrets-go/blob/main/secrets/secretDict.json?raw=true';
   
-  const versions = Object.keys(secretsData).map(Number);
-  const latestVersion = Math.max(...versions);
-  
-  return {
-    version: latestVersion,
-    secret: secretsData[latestVersion]
-  };
+  try {
+    const response = await axios.get(secretsUrl);
+    if (response.status === 200) {
+      const secretsData = response.data;
+      const versions = Object.keys(secretsData).map(Number);
+      const latestVersion = Math.max(...versions);
+      return {
+        version: latestVersion,
+        secret: secretsData[latestVersion]
+      };
+    }
+  } catch (error) {
+    // GitHub failed, fallback to extracting from Spotify
+  }
+
+  const result = await extractSecrets();
+  if (!result.success) {
+    throw new Error('Unable to get the secret');
+  }
+  return getLatestSecret(result.secretsDict);
 }
 
 async function getServerTimestamp() {
