@@ -17,7 +17,7 @@ const REQUEST_HEADERS = {
 };
 
 async function fetchSecrets() {
-  const secretsUrl = 'https://github.com/xyloflake/spodt-secrets-go/blob/main/secrets/secretDict.json?raw=true';
+  const secretsUrl = 'https://github.com/CycloneAddons/spotify-token-generator/blob/main/secrets/secretDict.json?raw=true';
   
   try {
     const response = await axios.get(secretsUrl);
