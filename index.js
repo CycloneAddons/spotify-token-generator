@@ -113,7 +113,7 @@ app.get('/api/getToken', async (req, res) => {
       productType: 'web-player',
       totp: totp.toString().padStart(6, '0'),
       totpVer: version,
-      ts: timestamp,
+      totpServer: totp.toString().padStart(6, '0')
     };
 
     const response = await axios.get(TOKEN_URL, {
